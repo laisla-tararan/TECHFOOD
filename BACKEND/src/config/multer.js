@@ -1,6 +1,5 @@
-const multer = require('multer'); // Importação do Multer
-const path = require('path'); // Importação do Path
-const { callbackify } = require('util');
+const multer = require('multer'); // Importação do Multer - Processa toda a operação.
+const path = require('path'); // Importação do Path - Manipula os diretórios.
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
