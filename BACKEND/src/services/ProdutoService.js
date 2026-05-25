@@ -27,14 +27,17 @@ class ProdutoService {
     }
 
     async cadastrarProduto(dados) {
-        const { nome, descricao, preco, categoria, disponivel } = dados;
+        const { nome, descricao, preco, categoria, disponivel, imagem } = dados;
 
         if (!nome || !descricao || preco === undefined) {
             throw { status: 400, mensagem: "Nome, descrição e preço são obrigatórios" };
         }
 
-        if (typeof preco !== "number" || preco <= 0) {
-            throw { status: 400, mensagem: "Preço deve ser um número positivo" };
+        if (isNaN(preco) || Number(preco) <= 0) {
+            throw {
+                status: 400,
+                mensagem: "Preço deve ser um número positivo",
+            };
         }
 
         const novoProduto = {
@@ -42,7 +45,8 @@ class ProdutoService {
             descricao: descricao.trim(),
             preco,
             categoria: categoria || null,
-            disponivel: disponivel ?? true
+            disponivel: disponivel ?? true,
+            imagem: imagem || null
         };
 
         const id = await ProdutoRepository.create(novoProduto);
@@ -65,7 +69,7 @@ class ProdutoService {
         }
 
         const atualizado = {};
-        const { nome, descricao, preco, categoria, disponivel } = dados;
+        const { nome, descricao, preco, categoria, disponivel, imagem } = dados;
 
         if (nome !== undefined) atualizado.nome = nome.trim();
         if (descricao !== undefined) atualizado.descricao = descricao.trim();
@@ -77,6 +81,7 @@ class ProdutoService {
         }
         if (categoria !== undefined) atualizado.categoria = categoria;
         if (disponivel !== undefined) atualizado.disponivel = disponivel;
+        if (imagem !== undefined) atualizado.imagem = imagem;
 
         if (Object.keys(atualizado).length === 0) {
             throw { status: 400, mensagem: "Nenhum dado válido enviado para atualização" };
