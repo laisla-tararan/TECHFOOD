@@ -28,22 +28,22 @@ function renderizarPedidos() {
   lista.innerHTML = "";
   let total = 0;
 
-  pedidos.forEach(function (pedido, indice) {
+  pedidos.forEach(function (pedidos, indice) {
     const li = document.createElement("li");
     li.classList.add("item-pedido");
 
     const textoSpan = document.createElement("span");
     textoSpan.innerHTML =
       "<strong>" +
-      pedido.nome +
+      pedidos.nome +
       "</strong>" +
       "-" +
-      pedido.qtd +
+      pedidos.qtd +
       "X" +
       "R$ " +
-      pedido.preco.toFixed(2).replace(".", ",") +
+      pedidos.preco.toFixed(2).replace(".", ",") +
       " = <span class='subtotal-item'> R$ " +
-      pedido.subtotal.toFixed(2).replace(".", ",") +
+      pedidos.subtotal.toFixed(2).replace(".", ",") +
       "</span>";
 
     // Cria um botão para remover o item do resumo

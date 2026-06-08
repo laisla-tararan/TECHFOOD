@@ -35,6 +35,22 @@ async function buscarPedidos() {
     return dados
 }
 
+async function cadastrarProduto(formData) {
+    const URL_API = `${BASE_URL}/produtos`; 
+
+    const resposta = await fetch(URL_API, {
+        method: "POST",
+        body: formData
+    });
+
+    if (!resposta.ok) {
+        const dadosErro = await resposta.json().catch(() => ({}));
+        throw new Error(dadosErro.mensagem || `Erro no servidor: Código ${resposta.status}`);
+    }
+
+    return await resposta.json();
+}
+
 //4. Deletar os pedidos - Utilizado pela cozinha.
 async function deletarPedido(id) {
     const response = await fetch(`${BASE_URL}/pedidos/${id}`, {

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/styles/global.css" />
+    <link rel="stylesheet" href="src/styles/cadastro.css" />
+    
+    <title>TechFood - Cadastro de Produtos</title>
+</head>
+<body>
+    <header id="topo-loja">
+        <h1 id="titulo-site">TechFood - Sabor & Saber</h1>
+        <p id="boas-vindas">Carregando...</p>
+
+        <input type="checkbox" id="bt_menu" />
+        <label for="bt_menu" id="label-menu" aria-label="Abrir menu de navegação">&#9776;</label>
+
+        <nav id="menu" role="navigation" aria-label="Menu principal">
+            <ul>
+                <li><a href="index.html">Cardápio</a></li>
+                <li><a href="cadastro.html" class="ativo">Cadastrar Prato</a></li>
+                <li><a href="pedidos.html">Meus Pedidos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="secao-cadastro">
+            <h2 class="titulo-secao">Cadastrar Novo Prato</h2>
+            
+            <p id="mensagem" style="text-align: center; font-weight: bold; margin-bottom: 15px; min-height: 20px;"></p>
+            
+            <article id="dados-cadastro">
+                <form id="form-cadastro" action="#" method="post" novalidate>
+                <label for="input-nome"> Nome do Prato: <span class="obrigatorio">*</span></label>
+                <input
+                    type="text"
+                    id="input-nome"
+                    name="nome"
+                    placeholder="Ex: Macarrão ao Sugo"
+                    maxlength="60"
+                    required
+                    aria-required="true"
+                    aria-describedby="erro-nome"
+                />
+                
+                <label for="input-desc"> Descrição do Prato: <span class="obrigatorio">*</span></label>
+                <input 
+                    type="text" 
+                    id="input-desc" 
+                    placeholder="Ex: Massa italiana..." 
+                    maxlength="150" 
+                    required 
+                    aria-required="true" 
+                    aria-describedby="erro-desc"
+                >
+                
+                <label for="input-preco"> Preço do Prato: <span class="obrigatorio">*</span></label>
+                <input 
+                    type="number" 
+                    id="input-preco" 
+                    placeholder="R$0,00" 
+                    required 
+                    aria-required="true" 
+                    aria-describedby="erro-preco"
+                >
+                
+                <label for="input-categoria"> Categoria do Prato: <span class="obrigatorio">*</span></label>
+                <select 
+                    id="input-categoria" 
+                    required 
+                    aria-required="true" 
+                    aria-describedby="erro-categoria"
+                >
+                    <option value="">-- Selecione --</option>
+                    <option value="massas">Massas</option>
+                    <option value="sobremesas">Sobremesas</option>
+                    <option value="bebidas">Bebidas</option>
+                    <option value="entradas">Entradas</option>
+                </select>
+                
+                <label for="input-imagem"> Imagem do Prato: <span class="obrigatorio">*</span></label>
+                <input 
+                    type="file" 
+                    id="input-imagem" 
+                    required 
+                    aria-required="true" 
+                    aria-describedby="erro-imagem"
+                >
+                
+                <div class="botoes-container">
+                    <button type="submit">✓ Salvar Prato</button>
+                    <button type="reset">✗ Limpar</button>
+                </div>
+                </form>
+            </article>
+        </section>
+    </main>
+    <footer id="rodape">
+        <div class="info-footer">
+            <p><strong>TechFood 2026</strong></p>
+            <p>Escola SENAI Ítalo Bologna - Itu/SP</p>
+            <p>Av. das Nações, 1500</p>
+        </div>
+        <p id="data-hora-footer"></p>
+    </footer>
+    <script src="src/scripts/global.js"></script>
+    <script src="src/scripts/cadastro.js"></script>
+    <script src="src/scripts/api.js"></script>
+</body>
+</html>

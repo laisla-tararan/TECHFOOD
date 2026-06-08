@@ -1,0 +1,257 @@
+/* ==========================================================================
+   Configurações mantidas das aulas anteriores
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+#topo-loja {
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+#bt_menu,
+#label-menu {
+  display: none;
+}
+
+#menu ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+#menu li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+#menu a {
+  color: #f1c40f;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.titulo-secao {
+  text-align: center;
+  margin: 40px 0 20px;
+  color: #2c3e50;
+}
+
+@media screen and (max-width: 768px) {
+  .vitrine-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #label-menu {
+    display: block;
+    font-size: 2rem;
+    color: #f1c40f;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+  }
+
+  #menu ul {
+    display: none;
+  }
+
+  #bt_menu:checked ~ #menu ul {
+    display: block;
+    padding: 8px 0;
+  }
+
+  #menu li {
+    display: block;
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  #menu li:last-child {
+    border-bottom: none;
+  }
+}
+
+
+/* ==========================================================================
+   Configurações exclusivas (Ajustadas para separar em duas colunas)
+   ========================================================================== */
+
+/* Mantido o seletor original, mas adaptado para o novo tamanho horizontal */
+#dados-cadastro {
+    margin: 40px auto;
+    max-width: 800px; /* Aumentado para caber o lado a lado confortavelmente */
+    background: #fff;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Modificado para criar o Grid que joga a imagem na esquerda e o resto na direita */
+#form-cadastro {
+    display: grid;
+    grid-template-columns: 240px 1fr; /* Coluna 1 fixa em 240px | Coluna 2 pega o resto */
+    gap: 0px 30px; /* Espaço entre as duas colunas */
+    align-items: start;
+}
+
+/* Garante que todas as labels sigam um padrão limpo */
+#dados-cadastro label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Força os campos de texto e seletores para a Coluna 2 (Direita) */
+#form-cadastro label[for="input-nome"],
+#form-cadastro #input-nome,
+#form-cadastro label[for="input-descricao"],
+#form-cadastro #input-descricao,
+#form-cadastro label[for="input-preco"],
+#form-cadastro #input-preco,
+#form-cadastro label[for="input-categoria"],
+#form-cadastro #input-categoria {
+    grid-column: 2;
+}
+
+/* Estilização interna de todos os inputs de dados */
+#form-cadastro input[type="text"],
+#form-cadastro input[type="number"],
+#form-cadastro select {
+    width: 100%;
+    padding: 11px;
+    margin-top: 5px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* Destaca a cor do asterisco obrigatório */
+.obrigatorio {
+    color: #dc3545;
+}
+
+
+/* ---- CONFIGURAÇÃO DA IMAGEM (Coluna 1 - Esquerda) ---- */
+
+/* Prende a label do input de imagem na coluna 1 */
+#form-cadastro label[for="input-imagem"] {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 5px;
+}
+
+/* Transforma o input feio nativo no quadrado cinza com a câmera */
+#form-cadastro #input-imagem {
+    grid-column: 1;
+    grid-row: 2 / span 5; /* Ocupa as linhas verticais ao lado dos campos */
+    
+    width: 240px;
+    height: 220px;
+    background-color: #f8f9fa;
+    border: 2px dashed #bbb;
+    border-radius: 8px;
+    padding: 110px 10px 10px 10px; /* Empurra o texto original para baixo */
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    font-size: 13px;
+}
+
+/* Renderiza o emoji de câmera centralizado no topo do quadrado */
+#form-cadastro #input-imagem::before {
+    content: "📷";
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 45px;
+}
+
+#form-cadastro #input-imagem.com-foto::before {
+    display: none;
+}
+
+/* ---- SEÇÃO DE BOTÕES (Parte inferior) ---- */
+
+/* Faz a caixinha dos botões se esticar pelas duas colunas embaixo */
+.botoes-container {
+    grid-column: 1 / span 2; 
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+/* Estilo visual dos botões */
+.botoes-container button {
+    flex: 1;
+    padding: 13px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    color: white;
+    transition: background 0.2s ease;
+}
+
+/* Botão Salvar (Verde) */
+.botoes-container button[type="submit"] {
+    background-color: #28a745;
+}
+.botoes-container button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Botão Limpar (Vermelho) */
+.botoes-container button[type="reset"] {
+    background-color: #dc3545;
+}
+.botoes-container button[type="reset"]:hover {
+    background-color: #c82333;
+}
+
+
+/* ---- COMPATIBILIDADE PARA CELULAR (Abaixo de 650px) ---- */
+@media screen and (max-width: 650px) {
+    #form-cadastro {
+        grid-template-columns: 1fr; /* Quebra as colunas e vira uma só */
+    }
+    
+    #form-cadastro label,
+    #form-cadastro input[type="text"],
+    #form-cadastro input[type="number"],
+    #form-cadastro select,
+    #form-cadastro label[for="input-imagem"],
+    #form-cadastro #input-imagem {
+        grid-column: 1 !important;
+        width: 100% !important;
+    }
+    
+    #form-cadastro #input-imagem {
+        grid-row: auto;
+        height: 180px;
+        padding-top: 85px;
+    }
+    
+    #form-cadastro #input-imagem::before {
+        top: 25px;
+    }
+    
+    .botoes-container {
+        grid-column: 1;
+    }
+}
